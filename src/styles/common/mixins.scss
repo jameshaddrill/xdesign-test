@@ -1,0 +1,6 @@
+// font sizes declared after CSS reset has been applied
+@mixin font-size($font-size: 16, $line-height: 18) {
+	font-size: $font-size + px;
+	font-size: ($font-size / 10) + rem; /* stylelint-disable-line declaration-block-no-duplicate-properties */
+	line-height: $line-height / $font-size;
+}

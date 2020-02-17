@@ -33,9 +33,9 @@ export default class LaunchList extends Component {
         return (
             <ul className="item">
             {
-                launches.map((launch) => {
+                launches.map((launch, index) => {
                     return ( 
-                        <LaunchListItem key={launch.flight_number} data={launch} />
+                        <LaunchListItem key={launch.flight_number} data={launch} index={index} />
                     )
                 })
                 }

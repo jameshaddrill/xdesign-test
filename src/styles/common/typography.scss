@@ -44,3 +44,8 @@ $font-family: 'Brandon Grotesque', Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-style: normal;
 }
+
+p, li {
+  color: $font-color;
+  @include font-size(16, 18);
+}

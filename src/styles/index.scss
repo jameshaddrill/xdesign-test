@@ -1,0 +1,34 @@
+@import 'vendor/reset';
+
+@import 'common/breakpoints';
+@import 'common/mixins';
+@import 'common/colours'; 
+@import 'common/typography';
+
+@import 'components/launch-list-item';
+
+body {
+  font-family: $font-family;
+}
+
+.container {
+  padding: 15px;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+
+  &--main {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.home-image {
+  width: 45%;
+  height: auto;
+  margin-right: 30px;
+
+  @media(min-width: $breakpoint-md) {
+    margin-right: 60px;
+  }
+}
