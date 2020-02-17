@@ -1,13 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => {
-    return (
-        <h1>SpaceX App</h1>
-    )
-};
+import App from './components/App';
 
 ReactDOM.render(
-    <App />,
-    document.querySelector('#root')
+    <App />, document.querySelector('#root')
 )
