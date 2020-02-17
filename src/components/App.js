@@ -1,5 +1,5 @@
 import React from 'react';
-import { LaunchList } from './LaunchList';
+import LaunchList from './LaunchList';
 
 const App = () => {
     return (

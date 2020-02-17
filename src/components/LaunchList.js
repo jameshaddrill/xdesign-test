@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { LaunchListItem } from './LaunchListItem';
+import LaunchListItem from './LaunchListItem';
 
-class LaunchList extends Component {
-    state = {
-        launches: [],
-        errors: null
-    };
+export default class LaunchList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            launches: [],
+            errors: null,
+            isLoading: true
+        };
+    }
 
     async getLaunches() {
         const response = await axios.get(`https://api.spacexdata.com/v3/launches`);
         try {
             this.setState({
               launches: response.data,
+              isLoading: false
             });
           } catch (error) {
               console.log(error);
@@ -28,22 +33,22 @@ class LaunchList extends Component {
         return (
             <ul className="item">
             {
-                launches.map(launch => {
+                launches.map((launch) => {
                     return ( 
                         <LaunchListItem key={launch.flight_number} data={launch} />
                     )
                 })
-            }
+                }
             </ul>
         )
     }
 
     render() {
-        
+        const { isLoading } = this.state;
         return (
-           this.renderListDefault()
+            <React.Fragment>
+                {!isLoading ? this.renderListDefault() : <h3>Loading</h3>}
+            </React.Fragment>
         ) 
     }
 }
-
-export { LaunchList };
