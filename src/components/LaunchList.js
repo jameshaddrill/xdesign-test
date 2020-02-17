@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { LaunchListItem } from './LaunchListItem';
 
 class LaunchList extends Component {
     state = {
@@ -22,15 +23,25 @@ class LaunchList extends Component {
         this.getLaunches();
     }
 
-    render() {
+    renderListDefault() {
         const { launches } = this.state;
         return (
-            <div>
-                {launches.map(launch => {
-                    return (<h2 key={launch.flight_number}>{launch.mission_name}</h2>)
+            <ul className="item">
+            {
+                launches.map(launch => {
+                    return ( 
+                        <LaunchListItem key={launch.flight_number} data={launch} />
+                    )
                 })
             }
-            </div>
+            </ul>
+        )
+    }
+
+    render() {
+        
+        return (
+           this.renderListDefault()
         ) 
     }
 }
