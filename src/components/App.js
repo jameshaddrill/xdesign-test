@@ -17,7 +17,6 @@ export default class App extends Component {
             isLoading: true
         };
     }
-// const App = () => {
     async getLaunches() {
         const response = await axios.get(`https://api.spacexdata.com/v3/launches`);
         try {
@@ -46,8 +45,7 @@ export default class App extends Component {
         return (
            
             <div className="container container--main">
-                <Header />
-                <button onClick={this.descend}>Descend!</button> 
+                <Header descendClick={this.reverse} />
                 <img srcSet={homeImage + " 1x," + homeImageDouble + " 2x," + homeImageTriple + " 3x"}
                     src={homeImage}
                     alt=""
@@ -60,5 +58,3 @@ export default class App extends Component {
         )
     }
 }
-
-// export default App;
