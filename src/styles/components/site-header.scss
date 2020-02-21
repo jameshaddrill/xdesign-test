@@ -9,6 +9,7 @@
         text-transform: uppercase;
         font-weight: 400;
         display: flex;
+        align-items: baseline;
     }
 
     &__title-text {
@@ -21,7 +22,6 @@
         display: inline-block;
         width: 170px;
         height: 22px;
-        background: url(../../assets/spacex-logo.png) 0 0 no-repeat;
         background-size: cover;
         text-indent: -5000px;
     }

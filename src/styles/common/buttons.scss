@@ -1,0 +1,24 @@
+.btn {
+    background: $primary-blue;
+    border: none;
+    color: #FFF;
+    height: 43px;
+    line-height: 43px;
+    padding: 0 16px;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &--edge {
+        border-radius: 22px 0 0 22px;
+        padding-right: 20px;
+    }
+
+    &__refresh-icon {
+        width: 14px;
+        height: 14px;
+        margin-left: 10px;
+    }
+}
+

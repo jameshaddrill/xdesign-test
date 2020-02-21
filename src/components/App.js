@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import LaunchList from './LaunchList';
 import Header from './Header';
+import ListControls from './ListControls';
 
 import homeImage from '../assets/img/launch-home.png';
 import homeImageDouble from '../assets/img/launch-home@2x.png'
@@ -14,7 +15,8 @@ export default class App extends Component {
         this.state = {
             launches: [],
             errors: null,
-            isLoading: true
+            isLoading: true,
+            launchYrs: []
         };
     }
 
@@ -25,9 +27,24 @@ export default class App extends Component {
               launches: response.data,
               isLoading: false
             });
+
+            this.setLaunchYears(response.data);
           } catch (error) {
               console.log(error);
           }
+    }
+
+    setLaunchYears(data) {
+        let launchYears = [];
+        data.forEach(dataItem => {
+            if(launchYears.indexOf(dataItem.launch_year) === -1) {
+                launchYears.push(dataItem.launch_year);
+            }
+        })
+        
+        this.setState({
+            launchYrs: launchYears
+        })
     }
 
     reverse = () => {
@@ -41,7 +58,6 @@ export default class App extends Component {
             isLoading: true
         });
 
-        console.log(this.state.isLoading)
         this.getLaunches();
     }
 
@@ -50,7 +66,7 @@ export default class App extends Component {
     }
 
     render() {
-        const { launches, isLoading } = this.state;
+        const { launches, isLoading, launchYrs } = this.state;
 
         return (
             <React.Fragment>
@@ -61,10 +77,10 @@ export default class App extends Component {
                         src={homeImage}
                         alt=""
                         className="home-image" />
-                    <React.Fragment>
+                    <div class="list-wrapper">
+                        <ListControls launchYrs={launchYrs} />
                         {!isLoading ? <LaunchList launches={launches} /> : <h2>Loading...</h2>}
-                    </React.Fragment>
-                    
+                    </div>
                 </div>
             </main>
             </React.Fragment>

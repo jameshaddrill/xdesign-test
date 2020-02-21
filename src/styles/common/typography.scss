@@ -45,7 +45,12 @@ $font-family: 'Brandon Grotesque', Arial, Helvetica, sans-serif;
   font-style: normal;
 }
 
-p, li {
+h1, h2, h3, h4, p, li, button {
+  font-family: $font-family;
+  color: $font-color;
+}
+
+p, li, button {
   color: $font-color;
   @include font-size(16, 18);
 }
