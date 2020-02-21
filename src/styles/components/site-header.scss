@@ -1,0 +1,35 @@
+.site-header {
+    width: 100%;
+    position: relative;
+    margin-bottom: 52px;
+
+    &__title {
+        @include font-size(20, 22);
+        vertical-align: baseline;
+        text-transform: uppercase;
+        font-weight: 400;
+        display: flex;
+    }
+
+    &__title-text {
+        display: inline-block;
+        line-height: 1;
+        padding-top: 5px;
+    }
+
+    &__logo {
+        display: inline-block;
+        width: 170px;
+        height: 22px;
+        background: url(../../assets/spacex-logo.png) 0 0 no-repeat;
+        background-size: cover;
+        text-indent: -5000px;
+    }
+
+    &__btn {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

@@ -17,6 +17,7 @@ export default class App extends Component {
             isLoading: true
         };
     }
+
     async getLaunches() {
         const response = await axios.get(`https://api.spacexdata.com/v3/launches`);
         try {
@@ -35,6 +36,15 @@ export default class App extends Component {
         })
     }
 
+    reload = () => {
+        this.setState({
+            isLoading: true
+        });
+
+        console.log(this.state.isLoading)
+        this.getLaunches();
+    }
+
     componentDidMount() {
         this.getLaunches();
     }
@@ -43,18 +53,21 @@ export default class App extends Component {
         const { launches, isLoading } = this.state;
 
         return (
-           
-            <div className="container container--main">
-                <Header descendClick={this.reverse} />
-                <img srcSet={homeImage + " 1x," + homeImageDouble + " 2x," + homeImageTriple + " 3x"}
-                    src={homeImage}
-                    alt=""
-                    className="home-image" />
-                <React.Fragment>
-                    {!isLoading ? <LaunchList launches={launches} /> : <h2>Loading...</h2>}
-                </React.Fragment>
-                
-            </div>
+            <React.Fragment>
+            <main>
+                <Header reloadClick={this.reload} />
+                <div className="container container--main">
+                    <img srcSet={homeImage + " 1x," + homeImageDouble + " 2x," + homeImageTriple + " 3x"}
+                        src={homeImage}
+                        alt=""
+                        className="home-image" />
+                    <React.Fragment>
+                        {!isLoading ? <LaunchList launches={launches} /> : <h2>Loading...</h2>}
+                    </React.Fragment>
+                    
+                </div>
+            </main>
+            </React.Fragment>
         )
     }
 }
