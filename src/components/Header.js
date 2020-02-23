@@ -8,7 +8,7 @@ import refreshIconTriple from '../assets/icon/refresh@3x.png';
 export default function Header(props) {
     return (
         <header className="site-header">
-            <div class="container">
+            <div className="container">
                 <h1 className="site-header__title">
                     <img src={spacexLogo} className="site-header__logo" />
                     <span className="sr-only">SpaceX</span> 

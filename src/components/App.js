@@ -14,9 +14,12 @@ export default class App extends Component {
         super(props);
         this.state = {
             launches: [],
+            renderedLaunches: [],
             errors: null,
             isLoading: true,
-            launchYrs: []
+            launchYrs: [],
+            isReversed: false,
+            filteredLaunches: ''
         };
     }
 
@@ -25,13 +28,14 @@ export default class App extends Component {
         try {
             this.setState({
               launches: response.data,
-              isLoading: false
+              isLoading: false,
+              isReversed: false
             });
 
             this.setLaunchYears(response.data);
           } catch (error) {
               console.log(error);
-          }
+        }
     }
 
     setLaunchYears(data) {
@@ -41,16 +45,27 @@ export default class App extends Component {
                 launchYears.push(dataItem.launch_year);
             }
         })
-        
+
         this.setState({
             launchYrs: launchYears
         })
     }
 
     reverse = () => {
-        this.setState({
-            launches: this.state.launches.reverse()
-        })
+        this.setState(state => {
+            const reversedList = this.state.launches.reverse();
+            let reversedFilter = [];
+
+            if (this.state.filteredLaunches.length) {
+                reversedFilter = this.state.filteredLaunches.reverse();
+            }
+            
+            return {
+                launches: reversedList,
+                filteredLaunches: reversedFilter,
+                isReversed: !this.state.isReversed
+            };
+        });
     }
 
     reload = () => {
@@ -61,12 +76,29 @@ export default class App extends Component {
         this.getLaunches();
     }
 
+    setFilteredLaunches = (event) => {
+        const filterDate = event.target.value;
+        let filteredList;
+
+        this.setState(state => {
+            if (filterDate === "all") {
+                filteredList = [];
+            } else {
+                filteredList = this.state.launches.filter((launch) => launch.launch_year === filterDate)
+            }
+            
+            return {
+                filteredLaunches: filteredList,
+            };
+        });
+    }
+
     componentDidMount() {
         this.getLaunches();
     }
 
     render() {
-        const { launches, isLoading, launchYrs } = this.state;
+        const { launches, isLoading, launchYrs, isReversed, filteredLaunches } = this.state;
 
         return (
             <React.Fragment>
@@ -77,9 +109,14 @@ export default class App extends Component {
                         src={homeImage}
                         alt=""
                         className="home-image" />
-                    <div class="list-wrapper">
-                        <ListControls launchYrs={launchYrs} />
-                        {!isLoading ? <LaunchList launches={launches} /> : <h2>Loading...</h2>}
+                    <div className="list-wrapper">
+                        <ListControls 
+                            filterChange={this.setFilteredLaunches}
+                            reverseClick={this.reverse} 
+                            launchYears={launchYrs} 
+                            btnText={isReversed ? 'ascending' : 'descending'}
+                         />
+                        {!isLoading ? <LaunchList launches={launches} filteredLaunches={filteredLaunches} /> : <h2>Loading...</h2>}
                     </div>
                 </div>
             </main>

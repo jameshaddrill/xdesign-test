@@ -1,0 +1,9 @@
+.list-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 13px;
+
+    &__btn {
+        margin-left: 9px;
+    }
+}

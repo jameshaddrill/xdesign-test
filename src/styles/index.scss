@@ -8,10 +8,12 @@
 
 @import 'components/site-header';
 @import 'components/launch-list-item';
+@import 'components/launch-list';
+@import 'components/list-controls';
 
 .container {
   padding: 15px;
-  width: 100%;
+  width: 100%; 
   max-width: 1440px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -26,10 +28,15 @@
   width: 45%;
   height: auto;
   margin-right: 30px;
+  align-self: flex-start;
 
   @media(min-width: $breakpoint-md) {
     margin-right: 60px;
   }
+}
+
+.list-wrapper {
+  width: 100%;
 }
 
 .sr-only {

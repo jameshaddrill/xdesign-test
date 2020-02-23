@@ -45,12 +45,12 @@ $font-family: 'Brandon Grotesque', Arial, Helvetica, sans-serif;
   font-style: normal;
 }
 
-h1, h2, h3, h4, p, li, button {
+h1, h2, h3, h4, p, li, button, input, label, select {
   font-family: $font-family;
   color: $font-color;
 }
 
-p, li, button {
+p, li, button, input, label, select {
   color: $font-color;
   @include font-size(16, 18);
 }
