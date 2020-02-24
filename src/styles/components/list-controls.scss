@@ -3,7 +3,16 @@
     justify-content: flex-end;
     margin-bottom: 13px;
 
+    &__select-container {
+        position: relative;
+
+        select {
+            padding-right: 30px;
+        }
+    }
+
     &__btn {
         margin-left: 9px;
+        appearance: none;
     }
 }

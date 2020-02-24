@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LaunchListItem from './LaunchListItem';
 
-export default class LaunchList extends Component {
-    renderListDefault() {
-        const launches = this.props.launches;
-        const filteredLaunches = this.props.filteredLaunches;
-        console.log(filteredLaunches);
+export default function LaunchList(props) {
+    function renderListDefault() {
+        const launches = props.launches;
+        const filteredLaunches = props.filteredLaunches;
+        
 
         if (filteredLaunches.length > 0) {
             return (
                 filteredLaunches.map((launch, index) => {
                     return (
-                        <ul className="list">
-                            <LaunchListItem key={launch.flight_number} data={launch} index={index} />
-                        </ul>
+                        <LaunchListItem key={launch.flight_number} data={launch} index={index} />
                     )
                 })
             )
@@ -21,18 +19,16 @@ export default class LaunchList extends Component {
             return (
                 launches.map((launch, index) => {
                     return (
-                        <ul className="list">
-                            <LaunchListItem key={launch.flight_number} data={launch} index={index} />
-                        </ul>
+                        <LaunchListItem key={launch.flight_number} data={launch} index={index} />
                     )
                 })
             )
         }
     }
 
-    render() {
-        return (
-            this.renderListDefault()
-        ) 
-    }
+    return (
+        <React.Fragment>
+            <ul>{renderListDefault()}</ul>
+        </React.Fragment>
+    ) 
 }

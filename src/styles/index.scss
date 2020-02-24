@@ -8,30 +8,32 @@
 
 @import 'components/site-header';
 @import 'components/launch-list-item';
-@import 'components/launch-list';
 @import 'components/list-controls';
 
 .container {
   padding: 15px;
   width: 100%; 
-  max-width: 1440px;
+  max-width: 1320px;
   margin: 0 auto;
   box-sizing: border-box;
 
-  &--main {
-    display: flex;
-    align-items: flex-start;
+  @media(min-width: $breakpoint-md) {
+    &--main {
+      display: flex;
+      align-items: flex-start;
+    }
   }
 }
 
 .home-image {
-  width: 45%;
-  height: auto;
-  margin-right: 30px;
-  align-self: flex-start;
+  display: none;
 
   @media(min-width: $breakpoint-md) {
-    margin-right: 60px;
+    display: block;
+    margin: 0 60px 0 0;
+    align-self: flex-start;
+    width: auto;
+    max-width: 45%;
   }
 }
 

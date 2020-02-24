@@ -10,7 +10,7 @@ export default function Header(props) {
         <header className="site-header">
             <div className="container">
                 <h1 className="site-header__title">
-                    <img src={spacexLogo} className="site-header__logo" />
+                    <img src={spacexLogo} className="site-header__logo" alt="" />
                     <span className="sr-only">SpaceX</span> 
                     <span className="site-header__title-text">Launches</span>
                 </h1>

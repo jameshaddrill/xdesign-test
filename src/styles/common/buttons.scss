@@ -15,10 +15,22 @@
         padding-right: 20px;
     }
 
-    &__refresh-icon {
+    &__refresh-icon,
+    &__sort-icon,
+    &__filter-icon {
         width: 14px;
         height: 14px;
         margin-left: 10px;
+    }
+
+    &__filter-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        width: 10px;
+        height: 7px;
+        transform: translateY(-50%);
+        pointer-events: none;
     }
 }
 
